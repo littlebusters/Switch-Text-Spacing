@@ -1,0 +1,91 @@
+@import '../Resources/l18n.js';
+
+var switchTextSpacing = function (context) {
+	var doc = context.document;
+	var sel = context.selection;
+	var lang = NSUserDefaults.standardUserDefaults().objectForKey("AppleLanguages").objectAtIndex(0);
+	if ( 'ja-JP' != lang ) {
+		lang = 'en';
+	}
+
+	if (sel.count() > 0) {
+
+		var textSpacingOption = l18n[lang].options;
+
+		var userInput = COSAlertWindow.new();
+		userInput.setIcon(NSImage.alloc().initByReferencingFile(context.plugin.urlForResourceNamed("icon.png").path()));
+		userInput.setMessageText(l18n[lang].messageText);
+		userInput.setInformativeText(l18n[lang].infoText);
+		userInput.addAccessoryView(createRadioButtons(textSpacingOption, 5));
+		userInput.addButtonWithTitle('OK');
+		userInput.addButtonWithTitle('Cancel');
+
+		var tabIndex1 = userInput.viewAtIndex(0);
+		userInput.alert().window().setInitialFirstResponder(tabIndex1);
+
+		var responseCode = userInput.runModal();
+
+		if (1000 == responseCode) {
+
+			var tagID = userInput.viewAtIndex(0).selectedCell().tag();
+	
+			for (var i = 0; i < sel.count(); i++) {
+				if ('MSTextLayer' == sel[i].class()) {
+					var text = sel[i];
+					var textValue = text.stringValue();
+					var fontSize  = text.fontSize();
+					var fontName  = text.fontPostscriptName();
+					var range     = NSMakeRange(0, textValue.length());
+					var features  = [{
+							'CTFeatureTypeIdentifier': 22,
+							'CTFeatureSelectorIdentifier': tagID
+						}];
+					var textFont = NSFont.fontWithName_size_(fontName, fontSize);
+					var fontDesc = textFont.fontDescriptor();
+					var timeDesc = fontDesc.fontDescriptorByAddingAttributes({NSCTFontFeatureSettingsAttribute: features});
+					var settings = NSFont.fontWithDescriptor_size_(timeDesc, fontSize);
+					text.setIsEditingText(true);
+					text.addAttribute_value_forRange_(NSFontAttributeName, settings, range);
+					text.setIsEditingText(false);
+				}
+			}
+
+			if ( 'en' == lang ) {
+				doc.showMessage(l18n[lang].switched + textSpacingOption[tagID] + '"!');
+			} else {
+				doc.showMessage('「' + textSpacingOption[tagID] + l18n[lang].switched);
+			}
+
+		}
+
+	} else {
+		doc.showMessage(l18n[lang].nonSelected);
+	}
+}
+
+function createRadioButtons(options, selected) {
+	var rows = options.length;
+	var columns = 1;
+
+	var buttonCell = NSButtonCell.new();
+	buttonCell.setButtonType(NSRadioButton);
+
+	var buttonMatrix = NSMatrix.alloc().initWithFrame_mode_prototype_numberOfRows_numberOfColumns_(
+		NSMakeRect(20, 20, 300, rows * 25), 
+		NSRadioModeMatrix, 
+		buttonCell, 
+		rows, 
+		columns
+	);
+	buttonMatrix.setCellSize(NSMakeSize(300, 20));
+
+	for (i = 0; i < options.length; i++) {
+		buttonMatrix.cells().objectAtIndex(i).setTitle(i + ': ' + options[i]);
+		buttonMatrix.cells().objectAtIndex(i).setTag(i);
+		buttonMatrix.cells().objectAtIndex(i).setKeyEquivalent(i + '');
+	}
+
+	buttonMatrix.selectCellAtRow_column_(selected, 0);
+
+	return buttonMatrix;
+}

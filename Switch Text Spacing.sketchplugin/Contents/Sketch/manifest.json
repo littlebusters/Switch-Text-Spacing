@@ -1,0 +1,24 @@
+{
+    "author": "littlebusters",
+    "menu" : {
+        "isRoot" : true,
+        "shortcut" : "",
+        "items" : [
+            "switch-text-spacing"
+        ],
+        "title" : "Switch Text Spacing"
+    },
+    "identifier": "net.creative-tweet.switch-text-spacing",
+    "version": "1.0.0",
+    "description" : "Switch to Text Spacing for OpenType.",
+    "name" : "Switch Text Spacing",
+    "commands" : [
+        {
+            "name": "Switch Text Spacing",
+            "identifier": "switch-text-spacing",
+            "shortcut": "command control shift s",
+            "handler" : "switchTextSpacing",
+            "script": "switch-text-spacing.sketchscript"
+        }
+    ]
+}
