@@ -10,10 +10,11 @@ l18n['en'] = {
 		'Quarter Width',
 		'Alternate Proportional Widths',
 		'Alternate Half Width',
-		'No Change (Default)',
+		'No Change',
 		'No Kerning'
 	],
 	'switched': 'Switched to "',
+	'switchedAfter': '"!',
 	'nonSelected': 'You have not selection!'
 }
 l18n['ja-JP'] = {
@@ -27,9 +28,10 @@ l18n['ja-JP'] = {
 		'四分幅',
 		'代替プロポーショナル幅',
 		'代替半角',
-		'変更なし（デフォルト）',
+		'変更なし（カーニングのみ）',
 		'カーニングなし'
 	],
-	'switched': '」に変更しました！',
+	'switched': '「',
+	'switchedAfter': '」に変更しました！',
 	'nonSelected': 'レイヤーを選択してください。'
 }

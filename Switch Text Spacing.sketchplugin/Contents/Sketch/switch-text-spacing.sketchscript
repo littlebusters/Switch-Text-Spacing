@@ -49,13 +49,7 @@ var switchTextSpacing = function (context) {
 					text.setIsEditingText(false);
 				}
 			}
-
-			if ( 'en' == lang ) {
-				doc.showMessage(l18n[lang].switched + textSpacingOption[tagID] + '"!');
-			} else {
-				doc.showMessage('「' + textSpacingOption[tagID] + l18n[lang].switched);
-			}
-
+			doc.showMessage(l18n[lang].switched + textSpacingOption[tagID] + l18n[lang].switchedAfter);
 		}
 
 	} else {
