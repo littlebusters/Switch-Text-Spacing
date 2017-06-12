@@ -9,9 +9,10 @@
         "title" : "Switch Text Spacing"
     },
     "identifier": "net.creative-tweet.switch-text-spacing",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description" : "Switch to Text Spacing for OpenType.",
     "name" : "Switch Text Spacing",
+    "appcast": "https://raw.githubusercontent.com/littlebusters/Switch-Text-Spacing/master/Switch%20Text%20Spacing.sketchplugin/Contents/Resources/update.xml",
     "commands" : [
         {
             "name": "Switch Text Spacing",
