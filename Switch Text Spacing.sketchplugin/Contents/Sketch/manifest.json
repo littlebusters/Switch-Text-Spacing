@@ -9,8 +9,8 @@
         "title" : "Switch Text Spacing"
     },
     "identifier": "net.creative-tweet.switch-text-spacing",
-    "version": "1.0.1",
-    "description" : "Switch to Text Spacing for OpenType.",
+    "version": "1.2.0",
+    "description" : "Switch for Text Spacing of OpenType Features.",
     "name" : "Switch Text Spacing",
     "appcast": "https://raw.githubusercontent.com/littlebusters/Switch-Text-Spacing/master/Switch%20Text%20Spacing.sketchplugin/Contents/Resources/update.xml",
     "commands" : [
@@ -19,7 +19,9 @@
             "identifier": "switch-text-spacing",
             "shortcut": "command control shift s",
             "handler" : "switchTextSpacing",
-            "script": "switch-text-spacing.sketchscript"
+            "script": "switch-text-spacing.sketchscript",
+            "description": "Switch for Text Spacing of OpenType Features.",
+            "icon": "icon-textspace.png"
         }
     ]
 }

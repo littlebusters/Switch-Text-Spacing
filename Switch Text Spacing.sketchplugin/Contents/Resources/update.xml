@@ -6,16 +6,16 @@
     <description>Switch to Text Spacing for OpenType.</description>
     <language>en</language>
       <item>
-        <title>Version 1.0.1</title>
+        <title>Version 1.2.0</title>
         <description>
           <![CDATA[
             <ul>
-              <li>Supports Official Updating</li>
+              <li>Supports Sketch Runnner</li>
             </ul>
           ]]>
         </description>
-        <pubDate>Mon, 12 Jun 2017 21:27:00 +0900</pubDate>
-        <enclosure url="https://github.com/littlebusters/Switch-Text-Spacing/archive/master.zip" sparkle:version="1.0.1" length="57972" type="application/octet-stream" />
+        <pubDate>Tue, 13 Jun 2017 23:31:00 +0900</pubDate>
+        <enclosure url="https://github.com/littlebusters/Switch-Text-Spacing/archive/master.zip" sparkle:version="1.2.0" length="57972" type="application/octet-stream" />
       </item>
   </channel>
 </rss>
